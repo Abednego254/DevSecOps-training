@@ -1,0 +1,8 @@
+[project]
+name = "student-app"
+version = "1.0.0"
+description = "A simple App"
+
+[project.dependencies]
+django = "4.0"
+requests = "2.28"
