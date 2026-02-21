@@ -1,0 +1,19 @@
+microservices:
+  app: user-authentication
+  port: 9000
+  version: 1.7
+
+spec:
+  containers:
+    name: nginx-container
+    image: nginx
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name: nginx-vol
+        mountPath: /usr/nginx/html
+      - name: sidecar-container
+        image: some-image
+        command: ["/bin/sh"]
+        args: ["-c", "echo Hello from sidecar container; sleep 300"]
+

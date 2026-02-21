@@ -1,0 +1,52 @@
+name: production-server
+ip: 192.168.1.10
+port: 8080
+debug mode: false
+
+---
+app_name: student-portal
+version: 1.0
+
+developers: [Alice, Brian, Carol]
+
+databases:
+  - type: mysql
+    host: localhost
+    port: 3306
+
+---
+version: 3
+
+services:
+  web:
+    image: nginx
+    ports:
+      -8080:80
+
+---
+stage: test
+run-tests:
+  stage: test
+  script:
+  - python manage.py test
+
+---
+app:
+  name: student-system
+  version: 2.0
+  debug: true
+
+servers:
+  - name: web1
+    ip: 192.168.1.10
+
+  - name: web2
+    ip: 192.168.1.11
+
+---
+version: 3
+services:
+  web:
+    image: nginx
+    ports:
+      - 8080:80

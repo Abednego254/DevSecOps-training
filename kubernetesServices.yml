@@ -1,0 +1,34 @@
+#  v1 is the core API group for simple objects like Service, Pod, ConfigMap.
+apiVersion: v1
+
+#  Declares the type of object.
+#  A Service exposes Pods internally or externally.
+kind: Service
+
+#   Name of the Service object.
+metadata:
+  name: student-service
+
+spec:
+  type: ClusterIP  #  Name of the Service object. NodePort/ LoadBalancer/ ExternalName
+  #  Only Pods with app=student label will receive traffic.
+  selector:
+    app: student  #   Selects which Pods this Service routes traffic to.
+
+  # port: The port exposed by the Service inside the cluster.
+  #   targetPort: The port on the Pod that the Service sends traffic to.
+  ports:
+    - port: 80
+      targetPort: 80
+
+      # Deployment → manages Pods, ensures replicas run.
+
+  # Service → exposes Pods, internal or external.
+
+  # Labels and selectors → connect Deployment ↔ Service.
+
+  # Spec → defines the desired state of resources.
+
+  # Template → blueprint for Pods in Deployment.
+
+  # Indentation is critical → YAML errors break Kubernetes deployment.
