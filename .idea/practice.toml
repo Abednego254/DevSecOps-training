@@ -1,0 +1,24 @@
+# TOM'S Obvious Minimal Language
+
+#  TABLES
+[table]
+numbers = [1, 2, 3, 4]
+letters = ['a', 'b', 'c', 'd']
+
+# SUBTABLES
+[table.subtable]
+updated = true
+author = "John Doe"
+
+[database]
+type = "SQLite"
+path = "data.db"
+
+# LIST OF OBJECTS
+[[servers]]
+name = "web1"
+ip = "1.2.3.4.5"
+
+[[servers]]
+name = "web2"
+ip = "1.4.3.2"
