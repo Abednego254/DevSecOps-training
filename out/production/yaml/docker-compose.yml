@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    image: image_name
+    ports:
+      - "host:container"
+    environment:
+      VAR: value
+    volumes:
+      - host:container
+
+
+    # The containers that should run (containers)
+    # The images the containers use (image)
+    # The ports to be exposed (ports)
+    # If they need environmental variables (Environment)
+    # If they store data (Volumes)

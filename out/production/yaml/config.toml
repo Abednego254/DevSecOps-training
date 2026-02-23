@@ -1,0 +1,103 @@
+#  ======================================
+#  APPLICATION INFORMATION
+# ========================================
+
+[app]
+name = "Student App"
+version = "1.0.0"
+environment = "production"
+debug = false
+
+#  ======================================
+#  Server Configuration
+# ========================================
+
+[server]
+host = "0.0.0.0"
+port = 8080
+workers = 4
+timeoutSeconds = 30
+
+#  ======================================
+#  Database Configuration
+# ========================================
+[database]
+engine = "postgresql"
+host = "localhost"
+port = 5432
+username = "Abednego"
+password = "Secure Password"
+databaseName = "cfg"
+maxConnections = 20
+sslEnabled = true
+
+#  ======================================
+#  Login Configuration
+# ========================================
+
+[logging]
+level = "INFO"
+file = "/var/log/student.log"
+rotate = true
+maxSizeMb = 100
+
+#  ======================================
+#  Feature Flags
+# ========================================
+
+[features]
+enableRegistration = true
+enablePayment = false
+enableEmailNotifications = true
+
+#  ======================================
+#  ALLOWED CORS ORIGINS (ARRAY)
+# ========================================
+
+cors_allowed_origins = [
+    "https://example.com",
+    "https://admin.example.com"
+]
+
+#  ======================================
+#  CACHE CONFIGURATION
+# ========================================
+
+[cache]
+enabled = true
+engine = "redis"
+host = "localhost"
+port = 6379
+ttlSeconds = 600
+
+#  ======================================
+#  Multiple Deployment Servers
+#  {Array of tables}
+# ========================================
+
+[[servers]]
+name = "web1"
+ip = "192.168.1.10"
+role = "frontend"
+
+[[servers]]
+name = "web2"
+ip = "192.168.10.11"
+role = "background-worker"
+
+#  ======================================
+#  Environment-specific Overrides
+# ========================================
+
+[environments.deployment]
+debug = true
+databaseHost = "localhost"
+
+[environments.staging]
+debug = false
+databaseHost = "staging-db.internal"
+
+[environments.production]
+debug = false
+datbaseHost = "prod-db.internal"
+

@@ -1,0 +1,31 @@
+# The Kubernetes API version used to create the resource.
+apiVersion: apps/v1
+# The type of Kubernetes resource.
+kind: Deployment
+
+metadata:  # Contains identifying info about the object.
+  name: student-app  # unique name for this Deployment.
+
+  #  Labels are used by kubernetes to find pods
+  labels:  # key-value tags for selection and grouping of resources
+    #  For example:
+    app: student
+
+spec:   #  Defines the desired state of the Deployment.
+  replicas: 2  #  Defines the desired state of the Deployment.
+  selector:  #  Tells Deployment which Pods it manages.
+    matchLabels:  #  only Pods with app=student label will be managed.
+      #  Must match the labels in template.metadata.labels
+      app: student
+  template:  #  This is the blueprint for Pods.
+
+    #   assigns labels to Pods.
+    metadata:
+      labels:
+        app: student
+    spec:   # inside template defines the Pod specification.
+      containers:   #  list of containers in the Pod.
+        - name: student-container  #  list of containers in the Pod.
+          image: nginx   #  list of containers in the Pod.
+          ports:  # exposes ports inside the Pod
+            - containerPort: 80  #  container listens on port 80.
