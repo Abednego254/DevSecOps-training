@@ -4,7 +4,7 @@ services:
   app:
     image: image_name
     ports:
-      - "host:container"
+      - "8080:80"
     environment:
       VAR: value
     volumes:
